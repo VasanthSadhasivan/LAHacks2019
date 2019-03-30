@@ -3,6 +3,7 @@ import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 
 
 export default class Login extends Component{
+  static navigationOptions = { header: null };
   render() {
     return (
       <View style={styles.container}>
@@ -58,7 +59,8 @@ const styles = StyleSheet.create({
     fontSize: 24,
     padding: 20,
     margin: 'auto',
-    color:'white'
+    color:'white',
+    fontWeight: 'bold'
   },
   pubbutton: {
     alignItems: 'center',
