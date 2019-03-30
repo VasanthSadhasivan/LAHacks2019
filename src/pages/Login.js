@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
-import ellipse from '../../src/Ellipse-1.svg'
 import Svg, { Path } from 'react-native-svg';
 import ImagePicker from 'react-native-image-picker';
 
