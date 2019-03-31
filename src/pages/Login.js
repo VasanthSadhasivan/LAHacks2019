@@ -12,6 +12,7 @@ export default class Login extends Component {
   }
   static navigationOptions = { header: null };
   chooseFile = () => {
+
     var options = {
       title: 'Select Image',
       storageOptions: {
@@ -19,9 +20,7 @@ export default class Login extends Component {
         path: 'images',
       },
     };
-    ImagePicker.showImagePicker(options, response => {
-      console.log('Response = ', response);
- 
+    ImagePicker.showImagePicker(options, (response) => {
       if (response.didCancel) {
         console.log('User cancelled image picker');
       } else if (response.error) {
@@ -30,7 +29,7 @@ export default class Login extends Component {
         console.log('User tapped custom button: ', response.customButton);
         alert(response.customButton);
       } else {
-        let source = response;
+        let source = response["fileName"];
         // You can also display the image using data:
         // let source = { uri: 'data:image/jpeg;base64,' + response.data };
         this.setState({

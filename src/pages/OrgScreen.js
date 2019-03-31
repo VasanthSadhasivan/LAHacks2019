@@ -16,7 +16,7 @@ export default class OrgScreen extends Component {
           imagePath: '',
           loading: false,
           data: [
-              {name: 'UCLA Health'},
+              {name: 'UCLA Health Center'},
               {name: 'UCI Health'},
               {name: 'UCSD Health'},
               {name: 'Kaiser Permanente'},
@@ -26,7 +26,7 @@ export default class OrgScreen extends Component {
           ],
       }
   }
-  chooseFile = (uprops) => {
+  chooseFile = (organization_name) => {
     var options = {
       title: 'Select Image',
       storageOptions: {
@@ -34,9 +34,10 @@ export default class OrgScreen extends Component {
         path: 'images',
       },
     };
-    ImagePicker.showImagePicker(options, response = () => {
+
+    ImagePicker.showImagePicker(options, (response) => {
       console.log('Response = ', response);
-      console.log(uprops);
+      console.log(organization_name);
       
       if (response.didCancel) {
         console.log('User cancelled image picker');
@@ -46,8 +47,9 @@ export default class OrgScreen extends Component {
         console.log('User tapped custom button: ', response.customButton);
         alert(response.customButton);
       } else {
-        let source = response;
-        this.props.navigation.push('Diagnose', {uprops: uprops});
+        let source = response["uri"];
+        this.props.navigation.push('Diagnose', {organization_name: organization_name,
+          source: source });
         // You can also display the image using data:
         // let source = { uri: 'data:image/jpeg;base64,' + response.data };
         this.setState({
