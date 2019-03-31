@@ -52,7 +52,7 @@ export default class Login extends Component {
 </Svg>
         
         <View style={styles.headingicon}>
-          <Text style={styles.welcome}>Medisense</Text>
+          <Text style={styles.welcome}>MediSense</Text>
         </View>
         <View style={styles.buttoncontainer}>
           <TouchableOpacity style={styles.orgbutton} onPress={() => this.props.navigation.push('Org')}>
@@ -101,9 +101,10 @@ const styles = StyleSheet.create({
   },
   welcome: {
     flexDirection:'row',
-    fontSize: 20,
+    fontSize: 30,
     textAlign: 'center',
     margin: 10,
+    fontFamily:'LibreFranklin-Light',
     left: 80
   },
   instructions: {
@@ -123,7 +124,7 @@ const styles = StyleSheet.create({
     padding: 20,
     margin: 'auto',
     color: 'white',
-    fontWeight: 'bold'
+    fontFamily:'LibreFranklin-Medium'
   },
   pubbutton: {
     alignItems: 'center',
