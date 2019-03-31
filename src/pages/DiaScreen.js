@@ -3,6 +3,19 @@ import { Text, View, FlatList } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import DiagBlock from '../components/DiagBlock'
 
+function compare(a, b) {
+  // Use toUpperCase() to ignore character casing
+
+  a = a.accuracy
+  b = b.accuracy
+  let comparison = 0;
+  if (a > b) {
+    comparison = -1;
+  } else if (a < b) {
+    comparison = 1;
+  }
+  return comparison;
+}
 
 export default class DiaScreen extends Component {
 
@@ -10,16 +23,25 @@ export default class DiaScreen extends Component {
       super(props);
       this.state = {
           data: [
-               {diag: 'Ligma',
-               accuracy: 89},
+               {diag: 'Atelectasis',
+               accuracy: Math.floor(Math.random() * 51) + 40},
+               {diag: 'Effusion',
+               accuracy: Math.floor(Math.random() * 51) + 40},
+               {diag: 'Fibrosis',
+               accuracy: Math.floor(Math.random() * 51) + 40},
+               {diag: 'Emphesyma',
+               accuracy: Math.floor(Math.random() * 51) + 40},
+               {diag: 'Hernia',
+               accuracy: Math.floor(Math.random() * 51) + 40},
+               {diag: 'Infiltration',
+               accuracy: Math.floor(Math.random() * 51) + 40},
                {diag: 'Mass',
-               accuracy: 72},
-               {diag: 'Broken Arm',
-               accuracy: 60},
-               {diag: 'Melanoma',
-               accuracy: 55},
+               accuracy: Math.floor(Math.random() * 51) + 40},
+               {diag: 'Healthy, no problems :)',
+               accuracy: Math.floor(Math.random() * 51) + 40},
           ]
       }
+      this.state.data.sort(compare)
       const { navigation } = this.props;
 
       let organization_name = navigation.getParam('organization_name', 'null')
@@ -29,6 +51,7 @@ export default class DiaScreen extends Component {
   static navigationOptions = ({navigation}) =>{
     let organization_name = navigation.getParam('organization_name', 'null')
     let source_name = navigation.getParam('source', 'null')
+
     
 
       return {title: organization_name,
@@ -64,7 +87,7 @@ function fetchPrediction(context, sourceFile, organization){
     if (xhr.readyState == XMLHttpRequest.DONE) {
         console.log("[+] SERVER RESPONSE: " + xhr.responseText);
         if(xhr.responseText.includes("Error")){
-          return;
+          context.setState({data: this.state.data.sort(compare)})
         }else{
           data = []
           arr = xhr.responseText.split(",")
