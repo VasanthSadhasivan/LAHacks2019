@@ -79,7 +79,7 @@ function fetchPrediction(context, sourceFile, organization){
   }
 
   //xhr.open('POST', encodeURIComponent(("http://18.206.156.220:5000?organization="+organization)));
-  xhr.open('POST', "http://18.206.156.220:5000?organization=" + encodeURI(organization));
+  xhr.open('POST', "http://52.1.208.74:5000?organization=" + encodeURI(organization));
   xhr.setRequestHeader('organization',organization);
   xhr.send(body); 
 }
