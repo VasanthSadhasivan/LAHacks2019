@@ -26,7 +26,7 @@ export default class OrgScreen extends Component {
           ],
       }
   }
-  chooseFile = () => {
+  chooseFile = (uprops) => {
     var options = {
       title: 'Select Image',
       storageOptions: {
@@ -34,11 +34,10 @@ export default class OrgScreen extends Component {
         path: 'images',
       },
     };
-    ImagePicker.showImagePicker(options, response => {
+    ImagePicker.showImagePicker(options, response = () => {
       console.log('Response = ', response);
-      console.log(this.props)
-
- 
+      console.log(uprops);
+      
       if (response.didCancel) {
         console.log('User cancelled image picker');
       } else if (response.error) {
@@ -48,7 +47,7 @@ export default class OrgScreen extends Component {
         alert(response.customButton);
       } else {
         let source = response;
-        this.props.navigation.push('Diagnose');
+        this.props.navigation.push('Diagnose', {uprops: uprops});
         // You can also display the image using data:
         // let source = { uri: 'data:image/jpeg;base64,' + response.data };
         this.setState({
@@ -71,7 +70,7 @@ export default class OrgScreen extends Component {
         <FlatList data={this.state.data} 
         renderItem={({item}) => (
             <View style={styles.boxContainer} >
-                <TouchableOpacity style={styles.boxWithShadow} onPress={this.chooseFile.bind(this)}>
+                <TouchableOpacity style={styles.boxWithShadow} onPress={this.chooseFile.bind(this,item.name)}>
                     <Text style={styles.boxText}>{item.name}</Text><Icon name="arrow-right" color="#BA9BFD" size={30} style={styles.boxIcon}/>
                 </TouchableOpacity>
             </View>
