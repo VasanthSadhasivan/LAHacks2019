@@ -9,6 +9,7 @@ export default class OrgScreen extends Component {
     title: 'Choose your Org',
     headerBackImage: <Icon name="arrow-left" color="#FF89B3" size={20} style={{padding:5}}/>,
     headerTintColor: '#FF89B3',
+    headerTitleStyle:{fontFamily:'IBMPlexSans'}
   }
   constructor(props){
       super(props);
@@ -122,7 +123,8 @@ const styles = {
           bottom:5,
       },
       boxText: {
-          fontSize: 20
+          fontSize: 20,
+          fontFamily:'IBMPlexSans'
       },
       svg: {
         position: 'absolute',

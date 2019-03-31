@@ -34,7 +34,8 @@ const styles = {
         shadowOffset: { width: 0, height: 8 },
         shadowOpacity: 0.16,
         shadowRadius: 10.32,  
-        elevation: 16
+        elevation: 16,
+        fontFamily:"IBMPlexSans"
     },
     subDiagnosis: {
         padding: 40,
