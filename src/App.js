@@ -1,42 +1,76 @@
 import React, { Component } from 'react';
 import { Column, Row } from 'simple-flexbox';
-
+import {Router, Route, Switch, BrowserRouter, Link} from 'react-router-dom';
+import { createBrowserHistory } from 'history';
 import './App.css';
 
+import FileUpload from './Components/FileUpload';
+
 class App extends Component {
+  
+
   render() {
-    return (
+
+    const RouteShit = () => (
       <div>
-        <Row horizontal='center'>
-          <h1>LAHacks </h1>
-        </Row>
-        
-        <Row horizontal='center'>
+        <Switch>
+          <Route exact path='/' component={App}/>
+          <Route path='/fileupload' component={FileUpload}/>
+        </Switch>
+      </div>
+    )
 
-          <Column flexGrow={1} horizontal='center'>
-            <div style={styles.box}>
-              <span> Blue Shield </span>
-            </div>
-          </Column>
-          
-          <Column flexGrow={1} horizontal='center'>
-            <div style={styles.box}>
-              <span> Dignity Health </span>
-            </div>
-          </Column>
+    return (
+      <BrowserRouter>
+        <Route exact path = "/" render = { (props) => {
+          return(
+          <div>
+          <Row horizontal='center'>
+            <h1>LAHacks </h1>
+          </Row>
 
-          <Column flexGrow={1} horizontal='center'>
-            <div style={styles.box}>
-              <span> Kaiser Permanente </span>
-            </div>
-          </Column>
-        </Row>
+          <Row horizontal='center'>
+
+            <Column flexGrow={1} horizontal='center'>
+            <Link to="/fileupload">
+              <div style={styles.box}>
+                <span> Blue Shield </span>
+              </div>
+              </Link>
+            </Column>
+
+            <Column flexGrow={1} horizontal='center'>
+              <Link to="/fileupload">
+              <div style={styles.box}>
+                <span> Dignity Health </span>
+              </div>
+              </Link>
+            </Column>
+
+            <Column flexGrow={1} horizontal='center'>
+              <Link to="/fileupload">
+              <div style={styles.box}>
+                <span> Kaiser Permanente </span>
+              </div>
+              </Link>
+            </Column>
+          </Row>
+          </div>
+          );}
+        }/>
+
+        <Route exact path = "/fileupload" component = {FileUpload}/>
+
+        </BrowserRouter>
         
-        </div>
     );
   }
+
+
 }
 export default App;
+
+
 
 const styles = {
   box: {
