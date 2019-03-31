@@ -1,65 +1,62 @@
 import React, { Component } from 'react';
-import { Row } from 'simple-flexbox';
 
+import { Row } from 'simple-flexbox';
+import { Route, BrowserRouter } from 'react-router-dom';
 import './App.css';
+import './index.css';
+
+import FileUpload from './Components/FileUpload';
+import CompanyCard from './Components/CompanyCard';
 
 class App extends Component {
+
   render() {
+    
     return (
-      <div className="component-app">
-        <Row horizontal='center'>
-          <h1>LAHacks </h1>
-        </Row>
-        <Row horizontal='center'>
-          <h2>Please select your organization: </h2>
-        </Row>
+      <BrowserRouter>
+        <Route exact path="/" render={(props) => {
+          return (
+            <div className="container">
 
-        <Row flexGrow={1} horizontal='space-between'>
-          <button style={styles.box}>
-            <span> Blue Shield </span>
-          </button>
+              <Row horizontal='center'>
+                <h1 style={titleStyle}>MediSense</h1>
+              </Row>
 
-          <button style={styles.box}>
-            <span> Dignity Health </span>
-          </button>
 
-          <button style={styles.box}>
-            <span> Kaiser Permanente </span>
-          </button>
-        </Row>
-        <Row flexGrow={1} horizontal='space-between'>
-          <button style={styles.box}>
-            <span> Mercy Hospital </span>
-          </button>
+              <Row className="row" wrap="true" justifyContent="space-around">
+                <div className="one column">
+                  <CompanyCard name={'UCLA Health'} />
+                  <CompanyCard name={'UCI Health'} />
+                  <CompanyCard name={'UCSD Health'} />
+                  <CompanyCard name={'Blue Shield'} />
+                </div>
 
-          <button style={styles.box}>
-            <span> UCI Health </span>
-          </button>
+                <div className="one column">
+                  <CompanyCard name={'Mercy Medical'} />
+                  <CompanyCard name={'Dignity Health'} />
+                  <CompanyCard name={'Kaiser Permanente'} />
+                </div>
+              </Row>
 
-          <button style={styles.box}>
-            <span> UCLA Health </span>
-          </button>
-        </Row>
-        <Row horizontal='flex-start'>
-          <button style={styles.box}>
-            <span> UCSD Health </span>
-          </button>
-        </Row>
+            </div>
+          );
+        }
+        } />
+        <Route path='/:handle' component={FileUpload}/>
+      </BrowserRouter>
 
-      </div>
     );
   }
+
+
+}
+
+const titleStyle = {
+  fontSize: 64,
+  fontWeight: 'normal',
+  fontFamily: 'LibreFranklin'
 }
 
 export default App;
 
-const styles = {
-  box: {
-    flex: 1,
-    padding: 20,
-    //borderColor: 'white',
-    backgroundColor: '#FFF',
-    boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
-    borderRadius: 20
-  },
-}
+
