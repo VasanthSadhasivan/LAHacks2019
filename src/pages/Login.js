@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
 import ImagePicker from 'react-native-image-picker';
+import Logo from '../../Logo1.png'
 
 export default class Login extends Component {
   constructor(props){
@@ -51,6 +52,7 @@ export default class Login extends Component {
 </Svg>
         
         <View style={styles.headingicon}>
+        <Image style={styles.logo} source={Logo}/>
           <Text style={styles.welcome}>MediSense</Text>
         </View>
         <View style={styles.buttoncontainer}>
@@ -117,6 +119,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     right: 80,
     bottom: 50,
+    zIndex: 1
   },
   buttontext: {
     fontSize: 24,
@@ -131,6 +134,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     right: 80,
     bottom: 50,
+    zIndex: 1
   },
   buttoncontainer: {
     flex: 1,
@@ -154,5 +158,11 @@ const styles = StyleSheet.create({
   svgtwo: {
     position:'absolute',
     bottom:-8
+  },
+  logo: {
+    height: 120,
+    width: 120,
+    left:80
+
   }
 });
