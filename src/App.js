@@ -22,6 +22,11 @@ class App extends Component {
                 <h1 style={titleStyle}>MediSense</h1>
               </Row>
 
+              <Row horizontal='center'>
+                <h1 style={subtitleStyle}>
+                Please select your organization.
+                </h1>
+              </Row>
 
               <Row className="row" wrap="true" justifyContent="space-around">
                 <div className="one column">
@@ -55,6 +60,12 @@ const titleStyle = {
   fontSize: 64,
   fontWeight: 'normal',
   fontFamily: 'LibreFranklin'
+}
+const subtitleStyle = {
+  fontSize: 32,
+  fontWeight: 'normal',
+  fontFamily: 'LibreFranklin',
+  marginBottom: 30
 }
 
 export default App;
